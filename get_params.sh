@@ -3,7 +3,7 @@
 
 ECS_CLUSTER_NAME=$( jq '.cluster_name' -r )
 
-for e in $(env | cut -f1 -d= | grep -P '^TF_VAR_AWS' ) ; do
+for e in $(env | cut -f1 -d= | grep -E '^TF_VAR_AWS' ) ; do
     shortname="$(echo "$e" | sed -e 's/^TF_VAR_//' )"
     export $shortname=${!e}
 done
